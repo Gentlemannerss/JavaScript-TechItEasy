@@ -1,10 +1,39 @@
 /* Opdracht 4a*/
 function nameTv(arrayTV) {
     return arrayTV.map((tv) => {
-        return `${tv.brand} ${tv.type} - ${tv.name}`
-    })
+        return `${tv.brand} ${tv.type} - ${tv.name}`;
+    });
 }
 nameTv(inventory);
+
+function name(banaanName){
+    return `${banaanName.brand} ${banaanName.type} - ${banaanName.name}`
+}
+
+function price(banaanPrice){
+    return `${banaanPrice.price}`
+}
+
+function sizes(banaanSizes){
+    return banaanSizes.map((screensize) => {
+        return `${screensize} inch (${screensize * 2.54} cm)}`
+    });
+}
+
+function All(AllTv){
+    const container = document.getElementById('test')
+    const tvList = AllTv.map((tv) => {
+        return `
+        <li>
+            <h3>${name(tv)}</h3>
+            <h4>${price(tv)}</h4> 
+            <h4>${sizes(tv.availableSizes)}</h4>
+        </li>
+`
+    })
+    container.innerHTML = `${tvList.join('')}`
+}
+All(inventory);
 
 /*const tvNames = nameTv(inventory);
 document.getElementById("nameTV").textContent = tvNames.join(", ");*/
@@ -19,10 +48,9 @@ function priceTV(arrayTV) {
 }*/
 
 function priceTV(arrayTV) {
-    const tv = arrayTV.find((tv) => {
-        return tv;
+    return arrayTV.map((tv) => {
+        return `€${tv.price},-`;
     });
-    return `€${tv.price},-`;
 }
 
 priceTV(inventory);
@@ -30,7 +58,7 @@ priceTV(inventory);
 
 
 /* Opdracht 4c*/
-/* Optie 1, werkt niet.
+/*Optie 1, werkt niet.
 function screenSize(arrayTV) {
     arrayTV.map((tv) => {
         let result ="";
@@ -46,11 +74,13 @@ function screenSize(arrayTV) {
         }
         return result;
     });
-}
-*/
+}*/
 
-function generateScreenSizes(tv) {
-    return tv.availableSizes.map(screenSize => `${screenSize} inch (${screenSize * 2.54} cm)`).join(" | ");
+
+function generateScreenSizes(tvList) {
+    return tvList.map((screenSize) => {
+        return screenSize.availableSizes.map((tvSize) => {return `${tvSize} inch (${tvSize * 2.54} cm)`}
+    )});
 }
 
 /* opdracht 4d*/
