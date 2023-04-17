@@ -1,6 +1,6 @@
 /* Opdracht 2a*/
 let tvSold = 0;
-inventory.map((tv) => {
+inventory.map((tv) => { //Hier mag geen let tvSold = inventory.map((tv) => { Staan. Waarom weet ik niet.
     tvSold += tv.sold;
 });
 
